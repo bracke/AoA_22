@@ -1,0 +1,20 @@
+with "config/aoa_22_config.gpr";
+project AoA_22 is
+   for Source_Dirs use ("src/", "config/");
+   for Object_Dir use "obj/" & Aoa_22_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Exec_Dir use "bin";
+   for Main use ("aoa_22.adb","day01_2.adb","day02_2.adb","day03_2.adb","day04_2.adb","day05_2.adb","day06_2.adb","day08_2.adb","day09_2.adb","day10_2.adb","day11_2.adb","day14_2.adb","day01_1.adb","day02_1.adb","day03_1.adb","day04_1.adb","day05_1.adb","day06_1.adb","day08_1.adb","day09_1.adb","day10_1.adb","day11_1.adb","day14_1.adb","day15_1.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use Aoa_22_Config.Ada_Compiler_Switches;
+   end Compiler;
+
+   package Binder is
+      for Switches ("Ada") use ("-Es"); --  Symbolic traceback
+   end Binder;
+
+   package Install is
+      for Artifacts (".") use ("share");
+   end Install;
+end AoA_22;
